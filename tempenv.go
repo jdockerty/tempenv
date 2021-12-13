@@ -18,7 +18,7 @@ func Set(actionFunc interface{}, targetVar, tempVar, resetVar string, actionFunc
 		defer os.Setenv(targetVar, resetVar)
 
 		// Collect the passed arguments into a desirable slice that we can use.
-		fnArguments := make([]reflect.Value, len(actionFuncArgs)) 
+		fnArguments := make([]reflect.Value, len(actionFuncArgs))
 		for i, _ := range actionFuncArgs {
 			fnArguments[i] = reflect.ValueOf(actionFuncArgs[i])
 		}

@@ -9,10 +9,9 @@ import (
 
 const (
 	testTempEnv = "TEMPENV_TEST"
-	during     = "duringAction"
-	after      = "afterAction"
+	during      = "duringAction"
+	after       = "afterAction"
 )
-
 
 // TestSetEnvValidateFunc asserts whether our test function, which returns the current environment variable, has
 // the appropriate variable set during its execution time.
