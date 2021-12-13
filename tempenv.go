@@ -8,7 +8,8 @@ import (
 
 // Set is used to perform a function call with the setting and unsetting of the target environment variable
 // handled inbetween. This returns a slice of reflect values, which are the outputs, if any, of the function
-// that you passed.
+// that you passed. An error is returned if the action you pass is not a function, this is done via the
+// type of reflect.Func from the reflect package.
 func Set(actionFunc interface{}, targetVar, tempVar, resetVar string, actionFuncArgs ...interface{}) (*[]reflect.Value, error) {
 
 	switch t := reflect.TypeOf(actionFunc).Kind(); t {
