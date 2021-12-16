@@ -10,7 +10,7 @@ import (
 // handled inbetween. This returns a slice of reflect values, which are the outputs, if any, of the function
 // that you passed. An error is returned if the action you pass is not a function, this is done via the
 // type of reflect.Func from the reflect package.
-func Set(actionFunc interface{}, targetVar, tempVar, resetVar string, actionFuncArgs ...interface{}) (*[]reflect.Value, error) {
+func Set(targetVar, tempVar, resetVar string, actionFunc interface{}, args ...interface{}) (*[]reflect.Value, error) {
 
 	switch t := reflect.TypeOf(actionFunc).Kind(); t {
 	case reflect.Func:
@@ -18,9 +18,9 @@ func Set(actionFunc interface{}, targetVar, tempVar, resetVar string, actionFunc
 		defer os.Setenv(targetVar, resetVar)
 
 		// Collect the passed arguments into a desirable slice that we can use.
-		fnArguments := make([]reflect.Value, len(actionFuncArgs))
-		for i, _ := range actionFuncArgs {
-			fnArguments[i] = reflect.ValueOf(actionFuncArgs[i])
+		fnArguments := make([]reflect.Value, len(args))
+		for i, _ := range args {
+			fnArguments[i] = reflect.ValueOf(args[i])
 		}
 
 		funcResult := reflect.ValueOf(actionFunc).Call(fnArguments)

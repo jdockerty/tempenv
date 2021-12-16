@@ -23,7 +23,7 @@ func TestSetEnvValidateFunc(t *testing.T) {
 	}
 
 	funcArgument := testTempEnv
-	result, err := tempenv.Set(testerFunc, testTempEnv, during, after, funcArgument)
+	result, err := tempenv.Set(testTempEnv, during, after, testerFunc, funcArgument)
 	assert.Nil(err)
 
 	actual := (*result)[0].String() // We know that our function returns a string
